@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import HttpErrorResponseModel from "../../../models/HttpErrorResponseModel";
 import { editUser, fetchUsers, addUser } from "stores/common/users/UserAction";
 import DeleteModal from "../common/Models/DeleteModel";
+import ViewUserModal from "../common/Models/ViewUser"
 
 const Sample = ({ Samplelist, deleteTableUser }) => {
   const [showAddModel, setshowAddModel] = useState(false);
@@ -25,6 +26,7 @@ const Sample = ({ Samplelist, deleteTableUser }) => {
   const [showDeleteModel, setShowDeleteModel] = useState(false);
   const dispatch = useDispatch();
   const [userArray, setUserArray] = useState([]);
+  const [showViewModel, setshowViewModel] = useState(false);
 
   const toggleAddSelectedModel = useCallback(
     (user) => {
@@ -45,6 +47,21 @@ const Sample = ({ Samplelist, deleteTableUser }) => {
     },
     [showDeleteModel]
   );
+
+  const toggleViewSelectedModel = useCallback(
+    (user) => {
+      if (Object.keys(user).length > 0) {
+        let viewValues = {};
+        Object.keys(user).map(key => (viewValues[key] = user[key]));
+        setModalValues(viewValues);
+        setshowViewModel(!showViewModel)
+      }
+    }, [showViewModel]
+  )
+
+  const closeViewSelectedModel = useCallback(() => {
+    setshowViewModel(false);
+  }, []);
 
   const closeAddSelectedModel = useCallback(() => {
     setshowAddModel(false);
@@ -142,6 +159,10 @@ const Sample = ({ Samplelist, deleteTableUser }) => {
                     <em className="fa fa-edit"></em>
                   </button>
                   <button className="border-0 c-pointer bg-transparent mx-1 fs18"
+                    onClick={() => toggleViewSelectedModel(user)}>
+                    <em className="fa fa-eye"></em>
+                  </button>
+                  <button className="border-0 c-pointer bg-transparent mx-1 fs18"
                     onClick={() => toggleDeleteSelectedModel(user.id)}>
                     <em className="fa fa-trash"></em>
                   </button>
@@ -168,6 +189,11 @@ const Sample = ({ Samplelist, deleteTableUser }) => {
         onCancel={toggleDeleteSelectedModel}
         deleteTableUser={deleteTableUser}
         userId={userID}
+      />
+      <ViewUserModal 
+       modalValues={modalValues ? modalValues : ""}
+       show={showViewModel}
+       onCancel={closeViewSelectedModel}
       />
     </div>
   </div>;
