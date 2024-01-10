@@ -1,13 +1,14 @@
 import { CHART_LIST_FILTERED } from "./ChartTypes";
 import HttpErrorResponseModel from "../../../models/HttpErrorResponseModel";
+import data from './data'
 
 const initialState = {
   selectedCategory: "All",
-  chartData: [],
+  chartData: data.barChartData,
 };
 
 const ChartReducer = (state = initialState, action) => {
-  switch (action.type) {
+  switch (action.type) {    
     case CHART_LIST_FILTERED: {
       if (action.payload instanceof HttpErrorResponseModel) {
         return {
@@ -18,7 +19,7 @@ const ChartReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        selectedCategory: action.payload.category, // Update selectedCategory
+        selectedCategory: action.payload.category, 
         chartData: action.payload.data,
       };
     }
