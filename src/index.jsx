@@ -19,6 +19,7 @@ import "react-bootstrap-typeahead/css/Typeahead.css";
 
   const rootEl = createRoot(document.getElementById('root'));
   const render = (Component, el) => {
+    console.log("store",store);
     el.render(
       <Provider store={store}>
         <Component history={history} dispatch={store.dispatch} />

@@ -2,15 +2,14 @@ import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Spin } from "antd";
-import Sidebar from "../../views/components/common/layout/Sidebar";
 import RouteEnum from "../../constants/RouteEnum";
 import { SampleContainer } from "../containers/index";
+
 const MainLayout = (props) => {
   
   
   return (
     <Spin spinning={false} tip="Loading..." className="spin-loading">
-      {/* <Sidebar  /> */}
       <div
         className="Datacontent">
         <Suspense
