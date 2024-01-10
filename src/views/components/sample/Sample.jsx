@@ -125,10 +125,10 @@ const Sample = ({ Samplelist, deleteTableUser }) => {
 
 
   return <div>
-    <div className="container pt-3">
+    <div className="container pt-5">
       <div className="d-flex justify-content-between align-items-center mb-5">
         <h1 className="fw-600 fs20">Manage Users</h1>
-        <button className="btn btn-secondary" onClick={() => toggleAddSelectedModel({})}>
+        <button className="btn btn-secondary bg-blue border-0" onClick={() => toggleAddSelectedModel({})}>
           <em className="fa fa-plus me-2"></em>Add User</button>
       </div>
       <table className="table table-striped table-bordered">

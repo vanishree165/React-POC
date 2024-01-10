@@ -1,5 +1,5 @@
 enum RouteEnum {
-  Home = "/",
+  Home = "/manage-user",
   Dashboard = "/Dashboard",
 }
 

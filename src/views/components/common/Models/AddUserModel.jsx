@@ -165,7 +165,7 @@ const AddUserModal = ({
                     
                         <button type="submit"
                             onClick={modalValues.id ? fetchEditUser : addNewUserHandler}
-                            className="btn btn-primary px-5 py-2 mx-3"
+                            className="btn btn-primary px-5 py-2 mx-3 bg-blue border-0"
                         >
                             {modalValues.id ? "Save" : "Add"}
                         </button>

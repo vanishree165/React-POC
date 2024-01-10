@@ -19,10 +19,10 @@ const DeleteModal = ({ show, onCancel, deleteTableUser, userId }) => {
           Are you sure you want to delete?
         </p>
         <div className="d-flex align-items-center justify-content-center mt-4">
-          <button className="btn btn-grey px-5 mx-2" onClick={onCancel}>
+          <button className="btn btn-secondary px-5 py-2 mx-3" onClick={onCancel}>
             No
           </button>
-          <button className="btn btn-blue px-5 mx-2" onClick={deleteUser}>
+          <button className="btn btn-primary px-5 py-2 mx-3 bg-blue border-0" onClick={deleteUser}>
             Yes
           </button>
         </div>

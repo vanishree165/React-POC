@@ -7,24 +7,34 @@ import Toasts from "../components/common/toasts/Toasts";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Spin } from "antd";
 import { DashboardContainer } from "views/containers/DashboardContainer";
+import { SampleContainer } from "views/containers/index";
+
 import Sidebar from "../../views/components/common/layout/Sidebar";
 
 export const RouteRegisterer = () => {
   return (
     // this.props.isRequesting
-    <Spin spinning={false} tip="Loading..." className="spin-loading">
-       {/* <Sidebar  />  */}
-      <Router history={history}>
-        <Suspense
-          fallback={<Spin spinning tip="Loading..." className="spin-loading" />}
+    <Spin spinning={false} tip="Loading..." className="spin-loading row">
+            <Router history={history}>
+
+      <div className="row">
+      <div className="w-20">
+      <Sidebar  /> 
+      </div>
+      <div className="w-80">
+        <Suspense 
+          fallback={<Spin spinning tip="Loading..." className="spin-loading " />}
         >
           <Routes>
-            <Route path={`${RouteEnum.Home}/*`} element={<MainLayout />} />
-            <Route path={'/dashboard'} element={<DashboardContainer />} />
+            <Route exact path={RouteEnum.Home} element={<SampleContainer />} />
+            <Route path={RouteEnum.Dashboard} element={<DashboardContainer />} />
           </Routes>
         </Suspense>
         <Toasts />
+      </div>
+      </div>
       </Router>
+
     </Spin>
   );
 };
